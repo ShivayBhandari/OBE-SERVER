@@ -1,8 +1,11 @@
-const express = require('express');
-const morgan = require('morgan');
+const express = require("express");
+const morgan = require("morgan");
 const cors = require("cors");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-require('dotenv').config();
+
+const { routes } = require('./routes/demo');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -12,14 +15,30 @@ app.use(morgan('dev'));                             // HTTP Request Logger Middl
 app.use(express.json());                            // The express.json() function is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
 app.use(express.urlencoded({ extended: true }));
 
+// Routes
+app.use("/api", routes);
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGODB_TEST_URI, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true, 
+});
+
+mongoose.connection.on("error", err => {
+    console.log("err", err)
+})
+
+mongoose.connection.on("connected", (err, res) => {
+    console.log("mongoose is connected")
+})
 
 // Base Route
 app.get("/", (req, res) => {
-    res.json({
-        date: new Date(),
-        port: PORT,
-        dirName: __dirname
-    });
+  res.json({
+    date: new Date(),
+    port: PORT,
+    dirName: __dirname,
+  });
 });
 
-app.listen(PORT, () => console.log(`App Running On ${PORT}`))
+app.listen(PORT, () => console.log(`App Running On ${PORT}`));
