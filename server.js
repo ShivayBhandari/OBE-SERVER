@@ -7,6 +7,7 @@ require("dotenv").config();
 const { routes } = require("./routes/demo");
 const { authRoutes } = require("./routes/auth");
 const { userRoutes } = require("./routes/userRoutes");
+const { courseRoutes } = require("./routes/courseRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", routes);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/courses", courseRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_PROD_URI, {

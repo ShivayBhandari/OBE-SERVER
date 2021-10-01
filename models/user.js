@@ -35,8 +35,8 @@ const UserSchema = new Schema({
   },
   expirence: { type: Number },
 }, {
-    timestamps: true,
-    autoIndex: true,
+  timestamps: true,
+  autoIndex: true,
 });
 
 const User = Model("users", UserSchema);
