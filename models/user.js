@@ -42,3 +42,9 @@ const UserSchema = new Schema({
 const User = Model("users", UserSchema);
 
 module.exports = { User };
+
+/**
+ * curriculumsHashcode
+ * courses
+ * coursesHashcode 
+ */
