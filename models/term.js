@@ -6,7 +6,8 @@ const TermSchema = new Schema({
     termName: { type: String, required: true },
     termNo: { type: Number, required: true },
     curriculumId: { type: String },
-    curriculumName: { type: String }
+    curriculumName: { type: String },
+    deptName: {type: String},
 }, {
     timestamps: true,
     autoIndex: true

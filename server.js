@@ -8,6 +8,8 @@ const { routes } = require("./routes/demo");
 const { authRoutes } = require("./routes/auth");
 const { userRoutes } = require("./routes/userRoutes");
 const { courseRoutes } = require("./routes/courseRoutes");
+const { curriculumRoutes } = require("./routes/curriculumRoutes");
+const { termRoutes } = require("./routes/termRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -22,6 +24,8 @@ app.use("/api", routes);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/courses", courseRoutes);
+app.use("/curriculums", curriculumRoutes);
+app.use("/terms", termRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_PROD_URI, {
