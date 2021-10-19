@@ -19,4 +19,14 @@ courseRoutes.post('/add-course', (req, res) => {
     });
 });
 
+courseRoutes.delete("/delete/:courseId", (req, res) => {
+    Course.findByIdAndDelete(req.params.courseId, (err, msg) => {
+        if(err) {
+            return res.status(500).json({ ...err, message: "Something Went Wrong!!" }).end();
+        } else {
+            return res.status(200).json({ date: new Date(), message: "Course Delete successfully" }).end();
+        }
+    })
+});
+
 module.exports = { courseRoutes };

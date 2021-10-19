@@ -17,4 +17,14 @@ termRoutes.post('/add-term', async (req, res) => {
     })
 });
 
+termRoutes.delete("/delete/:termId", (req, res) => {
+    Term.findByIdAndDelete(req.params.termId, (err, msg) => {
+        if(err) {
+            return res.status(500).json({ ...err, message: "Something Went Wrong!!" }).end();
+        } else {
+            return res.status(200).json({ date: new Date(), message: "Term Delete successfully" }).end();
+        }
+    })
+});
+
 module.exports = { termRoutes };

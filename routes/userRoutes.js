@@ -42,11 +42,21 @@ userRoutes.put("/update-user/:_id", (req, res) => {
             return res.status(200).json({ date: new Date(), message: "User Updated successfully" }).end();
         }
     })
-})
+});
 
 userRoutes.get("/", async (req, res) => {
     const users = await User.find();
     return res.status(200).json({ data: users, dateTime: new Date() }).end()
+});
+
+userRoutes.delete("/delete/:userId", (req, res) => {
+    User.findByIdAndDelete(req.params.userId, (error, msg) => {
+        if(error) {
+            return res.status(500).json({ ...error, message: "Something Went Wrong!!" }).end();
+        } else {
+            return res.status(200).json({ date: new Date(), message: "User Delete successfully" }).end();
+        }
+    })
 })
 
 module.exports = { userRoutes };
