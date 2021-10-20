@@ -28,4 +28,21 @@ courseCORoutes.delete("/delete/:co_Id", (req, res) => {
   })
 });
 
+courseCORoutes.put("/update-co/:_id", (req, res) => {
+  let query = {};
+  for(let key in req.body) {
+      if(key !== "_id") query[key] = req.body[key];
+  }
+
+  CourseCO.findByIdAndUpdate(req.params._id, {
+      $set: { ...query }
+  }, (error, response) => {
+      if(error) {
+          return res.status(500).json({ ...error, message: "Something Went Wrong!!" }).end();
+      } else {
+          return res.status(200).json({ date: new Date(), message: "User Updated successfully" }).end();
+      }
+  })
+});
+
 module.exports = { courseCORoutes };
