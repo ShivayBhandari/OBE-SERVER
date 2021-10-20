@@ -12,7 +12,7 @@ const courseCOSchema = new Schema({
     courseId: { type: String },
     coCode: { type: String, required: true },
     coCodeStatement: { type: String, required: true },
-    deliveryMethod: { type: [String] },
+    deliveryMethod: { type: String },
     cognitiveDomain: { type: [String] }
 }, {
     timestamps: true,
