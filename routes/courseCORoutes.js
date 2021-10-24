@@ -20,28 +20,28 @@ courseCORoutes.post('/add-co', async (req, res) => {
 
 courseCORoutes.delete("/delete-co/:co_Id", (req, res) => {
   CourseCO.findByIdAndDelete(req.params.co_Id, (err, msg) => {
-      if(err) {
-          return res.status(500).json({ ...err, message: "Something Went Wrong!!" }).end();
-      } else {
-          return res.status(200).json({ date: new Date(), message: "Course Outcome Delete successfully" }).end();
-      }
+    if (err) {
+      return res.status(500).json({ ...err, message: "Something Went Wrong!!" }).end();
+    } else {
+      return res.status(200).json({ date: new Date(), message: "Course Outcome Delete successfully" }).end();
+    }
   })
 });
 
 courseCORoutes.put("/update-co/:id", (req, res) => {
   let query = {};
-  for(let key in req.body) {
-      if(key !== "_id") query[key] = req.body[key];
+  for (let key in req.body) {
+    if (key !== "_id") query[key] = req.body[key];
   }
 
   CourseCO.findByIdAndUpdate(req.params.id, {
-      $set: { ...query }  
-  }, (error, response) => {
-      if(error) {
-          return res.status(500).json({ ...error, message: "Something Went Wrong!!" }).end();
-      } else {
-          return res.status(200).json({ date: new Date(), message: "Course Outcome Updated successfully" }).end();
-      }
+    $set: { ...query }
+  }, { new: true }, (error, response) => {
+    if (error) {
+      return res.status(500).json({ ...error, message: "Something Went Wrong!!" }).end();
+    } else {
+      return res.status(200).json({ response: response, message: "Course Outcome Updated successfully" }).end();
+    }
   })
 });
 

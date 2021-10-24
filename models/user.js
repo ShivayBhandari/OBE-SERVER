@@ -29,6 +29,7 @@ const UserSchema = new Schema({
     default: "Information Technology",
   },
   qualification: { type: String },
+  superAdmin: { type: Boolean, default: false },
   designation: {
     type: String,
     default: "Assistant Professor",

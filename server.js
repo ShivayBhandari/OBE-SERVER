@@ -11,6 +11,7 @@ const { courseRoutes } = require("./routes/courseRoutes");
 const { courseCORoutes } = require("./routes/courseCORoutes");
 const { curriculumRoutes } = require("./routes/curriculumRoutes");
 const { termRoutes } = require("./routes/termRoutes");
+const { assessmentRoutes } = require("./routes/assessmentRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -28,6 +29,7 @@ app.use("/courses", courseRoutes);
 app.use("/course-outcomes", courseCORoutes);
 app.use("/curriculums", curriculumRoutes);
 app.use("/terms", termRoutes);
+app.use("/assessments", assessmentRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_PROD_URI, {
