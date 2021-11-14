@@ -7,7 +7,11 @@ const QuestionSchema = new Schema({
   bloomLevel: { type: String, required: true },
   questionNo: { type: String, required: true },           // Q1
   questionStatement: { type: String, required: true },    // a...z
-  maximumMarks: { type: Number, required: true }          // 2 / 4 / 8
+  maximumMarks: { type: Number, required: true },          // 2 / 4 / 8
+  obtainedMarks: { type: Schema.Types.Mixed, default: 0 }
+}, {
+  _id: false,
+  id: false
 }); 
 
 const assessmentSchema = new Schema({
@@ -29,4 +33,4 @@ const assessmentSchema = new Schema({
 });
 
 const Assessments = Model("assessments", assessmentSchema);
-module.exports = { Assessments };
+module.exports = { Assessments, QuestionSchema };

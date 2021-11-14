@@ -52,7 +52,7 @@ userRoutes.get("/", async (req, res) => {
   return res.status(200).json({ response: users, dateTime: new Date() }).end();
 });
 
-userRoutes.delete("/delete/:userId", (req, res) => {
+userRoutes.delete("/delete-user/:userId", (req, res) => {
   User.findByIdAndDelete(req.params.userId, (error, msg) => {
     if (error) {
       return res.status(500).json({ ...error, message: "Something Went Wrong!!" }).end();

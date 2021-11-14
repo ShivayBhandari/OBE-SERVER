@@ -1,42 +1,30 @@
-/**
- * studentName
- * urn
- * crn
- * courseId
- * curriculumId
- * termId
- * 
- * MST1-Q1-CO1
- * MST1-Q2-CO2
- * MST1-Q3-CO3
- * MST1-Q4-CO4
- * MST1-Q5-CO5
- * MST1-Q6-CO6
- * MST2-Q1-CO1
- * MST2-Q2-CO2
- * MST2-Q3-CO3
- * MST2-Q4-CO4
- * MST2-Q5-CO5
- * MST2-Q6-CO6
- * 
- * name 
- * 
- * 
- * [[MST1, Q1, CO1], [MST1, Q2, CO1], [MST1, Q3, CO1], ...]
- * 
- * 
- * userId == Assigning Curriculum ==> userHashcodeID [ Add ]
- * userId == Assigning Curriculum ==> userHashcodeID [ Pop ]
- * 
- * curriculumID ===> []
- * login ==> iterate 
- * 
- * 
- */
+const mongoose = require("mongoose");
+const { QuestionSchema } = require("./assessments");
+const Schema = mongoose.Schema;
+const Model = mongoose.model;
 
+const studentAttainmentSchema = new Schema({
+  studentName: { type: String },
+  urn: { type: Number },
+  crn: { type: Number },
+  curriculumId: { type: String },
+  curriculumName: { type: String },
+  termId: { type: String },
+  termName: { type: String },
+  termNo: { type: Number },
+  courseTitle: { type: String },
+  courseCode: { type: String },
+  courseId: { type: String },
+  assessmentId: { type: String },
+  assessmentType: { type: String }, // Written Test / Assignments / Quiz
+  assessmentName: { type: String, required: true },
+  questions: [QuestionSchema],
+  totalMarks: { type: Number },
+  totalObtainedMarks: { type: Number }
+}, {
+  timestamps: true,
+  autoIndex: true
+});
 
-/**
- * 1 Course => on average 3 documents (MST1 (6), MST2 (6), Assignment1 (2), ...) -> on average 14 questions => 1 All Questions
- * 
- * 40 Students => 40 Documents
- */
+const StudentAttainment = Model("studentattainments", studentAttainmentSchema);
+module.exports = { StudentAttainment };
