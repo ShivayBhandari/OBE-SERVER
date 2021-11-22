@@ -3,7 +3,7 @@ const { QuestionSchema } = require("./assessments");
 const Schema = mongoose.Schema;
 const Model = mongoose.model;
 
-const studentAttainmentSchema = new Schema({
+const MarksSchema = new Schema({
   studentName: { type: String },
   urn: { type: Number },
   crn: { type: Number },
@@ -26,5 +26,9 @@ const studentAttainmentSchema = new Schema({
   autoIndex: true
 });
 
-const StudentAttainment = Model("studentattainments", studentAttainmentSchema);
-module.exports = { StudentAttainment };
+MarksSchema.index("createdAt")
+
+const CIA_Marks = Model("cia_marks", MarksSchema);
+const ESE_Marks = Model("ese_marks", MarksSchema);
+
+module.exports = { CIA_Marks, ESE_Marks };
