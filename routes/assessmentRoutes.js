@@ -7,13 +7,13 @@ assessmentRoutes.get('/:courseId', async (req, res) => {
   return res.status(200).json({ assessments: assessments }).end();
 });
 
-// For Importing Internal Marks: MST, Assignments, and Quizes...
+// Fetching Assesssments For Importing Internal Marks: MST, Assignments, and Quizes...
 assessmentRoutes.get('/:courseId/cia-marks', async (req, res) => {
   const assessments = await Assessments.find({ 'courseId': req.params.courseId }).where('assessmentType').ne('ESE');
   return res.status(200).json({ assessments: assessments }).end();
 });
 
-// For Importing External Marks: End Semester Examination (ESE)......
+// Fetching Assesssments For Importing External Marks: End Semester Examination (ESE)......
 assessmentRoutes.get('/:courseId/ese-marks', async (req, res) => {
   const assessments = await Assessments.find({ 'courseId': req.params.courseId, 'assessmentType': 'ESE' });
   return res.status(200).json({ assessments: assessments }).end();
