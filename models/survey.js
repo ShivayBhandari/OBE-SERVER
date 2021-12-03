@@ -4,7 +4,7 @@ const Model = mongoose.model;
 
 const RatingSchema = new Schema({
   coCode: { type: String, required: true },               // CO1
-  coStatement: { type: String, required: true },    // a...z
+  coStatement: { type: String },    // a...z
   value: { type: Number, default: 0 },
   index: { type: Number, default: 0 }
 }, {
