@@ -16,7 +16,7 @@ attainmentRoutes.get('/:courseId/:assessmentId', async (req, res) => {
   });
   return res.status(200).json({ attainments: attainment }).end();
 });
-
+  
 attainmentRoutes.post('/add-student-marks', async (req, res) => {
   const { data } = { ...req.body };
   ((req.query?.ciaBool === 'true') ? CIA_Marks : ESE_Marks).insertMany([ ...data ]) 

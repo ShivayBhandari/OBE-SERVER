@@ -4,7 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const { routes } = require("./routes/demo");
+// const { routes } = require("./routes/demo");
 const { authRoutes } = require("./routes/auth");
 const { userRoutes } = require("./routes/userRoutes");
 const { courseRoutes } = require("./routes/courseRoutes");
@@ -13,7 +13,7 @@ const { curriculumRoutes } = require("./routes/curriculumRoutes");
 const { termRoutes } = require("./routes/termRoutes");
 const { assessmentRoutes } = require("./routes/assessmentRoutes");
 const { attainmentRoutes } = require("./routes/attainmentRoutes");
-
+const { surveyRoutes } = require("./routes/surveyRoutes");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -23,7 +23,7 @@ app.use(express.json()); // The express.json() function is a built-in middleware
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use("/api", routes);
+// app.use("/api", routes);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/courses", courseRoutes);
@@ -32,6 +32,7 @@ app.use("/curriculums", curriculumRoutes);
 app.use("/terms", termRoutes);
 app.use("/assessments", assessmentRoutes);
 app.use("/attainments", attainmentRoutes);
+app.use("/surveys", surveyRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_PROD_URI, {
