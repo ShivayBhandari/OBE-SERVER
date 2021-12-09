@@ -1,9 +1,8 @@
 const surveyRoutes = require("express").Router();
 const { Survey } = require("./../models/survey");
-const json = require("./../json/survey.json");
 
-surveyRoutes.get("/", async (req, res) => {
-    const surveys = await Survey.find();
+surveyRoutes.get("/:courseId", async (req, res) => {
+    const surveys = await Survey.find({ "courseId": req.params.courseId });
     return res.status(200).json({ surveys: surveys }).end();
 });
 
