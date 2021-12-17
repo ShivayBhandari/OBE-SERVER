@@ -13,6 +13,8 @@ const courseCOSchema = new Schema({
     coCode: { type: String, required: true },
     coType: { type: Number, default: 0 },
     coCodeStatement: { type: String, required: true },
+    classHrs : {type: Number, default: 0, },
+    labHrs: {type: Number, default: 0},
     deliveryMethod: { type: String },
     cognitiveDomain: { type: [String] }
 }, {
