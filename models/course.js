@@ -35,10 +35,12 @@ const courseSchema = new Schema({
     totalMarks: { type: Number },
     teeDuration: { type: Number, required: true },
     blommsDomain: { type: String },
-    state: { type: Boolean, default: true }
+    state: { type: Boolean, default: true },
+    poMapId: { type: String, default: null }
 }, {
     timestamps: true,
-    autoIndex: true
+    autoIndex: true,
+    strict: false
 });
 
 

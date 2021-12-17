@@ -6,6 +6,11 @@ courseCORoutes.get('/:courseId', async (req, res) => {
   return res.status(200).json({ coursesCO: coursesCO }).end();
 });
 
+courseCORoutes.get('/:courseId/theory-cos', async (req, res) => {
+  const coursesCO = await CourseCO.find({ 'courseId': req.params.courseId, 'coType': 0 });
+  return res.status(200).json({ coursesCO: coursesCO }).end();
+});
+
 courseCORoutes.post('/add-co', async (req, res) => {
   const courseCO = new CourseCO({ ...req.body });
 

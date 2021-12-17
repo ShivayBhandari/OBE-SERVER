@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Model = mongoose.model;
 
-const totalAttainmentSchema = new Schema({
+const CommonSchemma = new Schema({
     curriculumId: { type: String },
     curriculumName: { type: String },
     termId: { type: String },
@@ -18,8 +18,9 @@ const totalAttainmentSchema = new Schema({
     strict: false
 })
 
-totalAttainmentSchema.index("createdAt");
+CommonSchemma.index("createdAt");
 
-const FinalCoAttainment = Model("total_Co_Attainment", totalAttainmentSchema);
+const FinalCoAttainment = Model("total_Co_Attainment", CommonSchemma);
+const CO_PO_Mapping = Model("co_po_mapping", CommonSchemma);
 
-module.exports = {FinalCoAttainment};
+module.exports = {FinalCoAttainment , CO_PO_Mapping};
