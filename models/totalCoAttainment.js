@@ -13,7 +13,7 @@ const CommonSchemma = new Schema({
     courseId: { type: String },
 },
 {
-    timeStamp: true,
+    timestamps: true,
     autoIndex : true,
     strict: false
 })

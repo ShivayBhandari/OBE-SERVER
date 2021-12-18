@@ -1,13 +1,15 @@
 const courseCORoutes = require("express").Router();
 const { CourseCO } = require("./../models/course-co");
 
+const getTheoryCOS = async (courseId) => await CourseCO.find({ 'courseId': courseId, 'coType': 0 });
+
 courseCORoutes.get('/:courseId', async (req, res) => {
   const coursesCO = await CourseCO.find({ 'courseId': req.params.courseId });
   return res.status(200).json({ coursesCO: coursesCO }).end();
 });
 
 courseCORoutes.get('/:courseId/theory-cos', async (req, res) => {
-  const coursesCO = await CourseCO.find({ 'courseId': req.params.courseId, 'coType': 0 });
+  const coursesCO = await getTheoryCOS(req.params.courseId);
   return res.status(200).json({ coursesCO: coursesCO }).end();
 });
 
@@ -50,4 +52,4 @@ courseCORoutes.put("/update-co/:id", (req, res) => {
   })
 });
 
-module.exports = { courseCORoutes };
+module.exports = { courseCORoutes, getTheoryCOS };
