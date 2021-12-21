@@ -16,6 +16,7 @@ const { attainmentRoutes } = require("./routes/attainmentRoutes");
 const { surveyRoutes } = require("./routes/surveyRoutes");
 const { totalCoAttainmentRoutes } = require("./routes/totalCoAttainmentRoutes");
 const { poAttainmentRoutes } = require("./routes/poAttainment");
+const { totalPoAttainmentRoutes } = require("./routes/totalPoAttainmentRoutes");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -37,6 +38,7 @@ app.use("/attainments", attainmentRoutes);
 app.use("/surveys", surveyRoutes);
 app.use("/totalcoattainments", totalCoAttainmentRoutes);
 app.use("/co_po_mapping", poAttainmentRoutes);
+app.use("/totalpoattainments", totalPoAttainmentRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_PROD_URI, {
