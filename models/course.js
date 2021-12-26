@@ -8,11 +8,11 @@ const courseSchema = new Schema({
     termId: { type: String },
     termName: { type: String },
     termNo: { type: Number },
-    courseDomain: { type: String, required: true },
+    // courseDomain: { type: String, required: true },
     typeOfCourse: { type: String, required: true }, //Theory, Theory with Lab, Lab/Project Works/Others
     courseCode: { type: String, required: true },
     courseTitle: { type: String, required: true },
-    courseAcronym: { type: String, required: true },
+    // courseAcronym: { type: String, required: true },
     theoryCredits: { type: Number, required: true, default: 0 },
     tutorialCredits: { type: Number, required: true, default: 0 },
     practicalCredits: { type: Number, required: true, default: 0 },
@@ -26,7 +26,7 @@ const courseSchema = new Schema({
     courseOwnerId: { type: String },
     reviewerDepartment: { type: String, required: true },
     courseReviewer: { type: String, required: true },
-    lastDateToReview: { type: Date, required: true },
+    // lastDateToReview: { type: Date, required: true },
     totalCourseConatactHours: { type: Number, required: true },
     totalCiaMarks: { type: Number, required: true },
     totalMidTermMarks: { type: Number, required: true },
@@ -34,7 +34,7 @@ const courseSchema = new Schema({
     totalAttendanceMarks: { type: Number, default: 0 },
     totalMarks: { type: Number },
     teeDuration: { type: Number, required: true },
-    blommsDomain: { type: String },
+    // blommsDomain: { type: String },
     state: { type: Boolean, default: true },
     poMapId: { type: String, default: null }
 }, {
