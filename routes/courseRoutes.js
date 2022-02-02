@@ -6,6 +6,15 @@ courseRoutes.get('/', async (req, res) => {
   return res.status(200).json({ courses: courses }).end();
 });
 
+
+courseRoutes.get('/:curriculumId/:termId', async (req, res) => {
+  const courses = await Course.find({
+    "curriculumId": req.params.curriculumId,
+    "termId": req.params.termId
+  });
+  return res.status(200).json({ courses: courses }).end();
+});
+
 courseRoutes.post('/add-course', (req, res) => {
   const course = new Course({ ...req.body });
 
