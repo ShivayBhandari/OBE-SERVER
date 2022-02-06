@@ -17,6 +17,7 @@ const { surveyRoutes } = require("./routes/surveyRoutes");
 const { totalCoAttainmentRoutes } = require("./routes/totalCoAttainmentRoutes");
 const { poAttainmentRoutes } = require("./routes/poAttainment");
 const { totalPoAttainmentRoutes } = require("./routes/totalPoAttainmentRoutes");
+const { attainmentGapRoutes } = require("./routes/attainmentGapRoutes");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -39,28 +40,29 @@ app.use("/surveys", surveyRoutes);
 app.use("/totalcoattainments", totalCoAttainmentRoutes);
 app.use("/co_po_mapping", poAttainmentRoutes);
 app.use("/totalpoattainments", totalPoAttainmentRoutes);
+app.use("/attainmentgaps", attainmentGapRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_PROD_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
 
 mongoose.connection.on("error", (err) => {
-  console.log("err", err);
+    console.log("err", err);
 });
 
 mongoose.connection.on("connected", (err, res) => {
-  console.log("mongoose is connected");
+    console.log("mongoose is connected");
 });
 
 // Base Route
 app.get("/", (req, res) => {
-  res.json({
-    date: new Date(),
-    port: PORT,
-    dirName: __dirname,
-  });
+    res.json({
+        date: new Date(),
+        port: PORT,
+        dirName: __dirname,
+    });
 });
 
 app.listen(PORT, () => console.log(`App Running On ${PORT}`));
