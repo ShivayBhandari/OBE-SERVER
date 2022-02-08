@@ -25,6 +25,7 @@ const SurveySchema = new Schema({
   courseCode: { type: String },
   courseId: { type: String },
   rating: [RatingSchema],
+  assessmentId: { type: String }
 }, {
   timestamps: true,
   autoIndex: true

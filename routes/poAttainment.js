@@ -22,10 +22,9 @@ poAttainmentRoutes.get('/:courseId/get-po-map/:poMapId', async (req, res) => {
 });
 
 poAttainmentRoutes.post('/add', async (req, res) => {
-  let values = { ...req.body };
-  console.log(values);
-  
+  let values = { ...req.body };  
   values._id = values._id === "" ? new mongoose.Types.ObjectId() : values._id;
+  
   CO_PO_Mapping.findByIdAndUpdate(
     values._id,
     { ...values },

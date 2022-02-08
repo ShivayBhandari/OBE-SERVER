@@ -36,7 +36,8 @@ const courseSchema = new Schema({
     teeDuration: { type: Number, required: true },
     // blommsDomain: { type: String },
     state: { type: Boolean, default: true },
-    poMapId: { type: String, default: null }
+    poMapId: { type: String, default: null },
+    gapId: { type: String, default: null }
 }, {
     timestamps: true,
     autoIndex: true,
