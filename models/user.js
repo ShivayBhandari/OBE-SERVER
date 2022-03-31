@@ -20,6 +20,7 @@ const UserSchema = new Schema({
 }, {
   timestamps: true,
   autoIndex: true,
+  strict: false
 });
 
 const User = Model("users", UserSchema);
