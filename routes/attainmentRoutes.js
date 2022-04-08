@@ -10,7 +10,7 @@ attainmentRoutes.get('/:courseId', async (req, res) => {
 
 // For Viewing Marks of Student of Particular Assessment
 attainmentRoutes.get('/:courseId/:assessmentId', async (req, res) => {
-  const attainment = await ((req.query?.ciaBool === 'true') ? CIA_Marks : ESE_Marks).find({ 
+  const attainment = await ((req.query['ciaBool'] === 'true') ? CIA_Marks : ESE_Marks).find({ 
     'courseId': req.params.courseId,
     'assessmentId': req.params.assessmentId
   });
@@ -19,7 +19,7 @@ attainmentRoutes.get('/:courseId/:assessmentId', async (req, res) => {
   
 attainmentRoutes.post('/add-student-marks', async (req, res) => {
   const { data } = { ...req.body };
-  ((req.query?.ciaBool === 'true') ? CIA_Marks : ESE_Marks).insertMany([ ...data ]) 
+  ((req.query.ciaBool === 'true') ? CIA_Marks : ESE_Marks).insertMany([ ...data ]) 
     .then((response) => {
       return res.status(200).json({ response: response, error: null, message: 'Student Marks Imported Successfully' }).end();
     })

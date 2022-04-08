@@ -20,7 +20,9 @@ const { totalCoAttainmentRoutes } = require("./routes/totalCoAttainmentRoutes");
 const { poAttainmentRoutes } = require("./routes/poAttainment");
 const { totalPoAttainmentRoutes } = require("./routes/totalPoAttainmentRoutes");
 const { attainmentGapRoutes } = require("./routes/attainmentGapRoutes");
+
 const app = express();
+const server = require('http').createServer(app);
 const PORT = process.env.PORT || 8000;
 
 app.use(cors({
@@ -67,4 +69,5 @@ app.get("/", (req, res) => {
     });
 });
 
-app.listen(PORT, () => console.log(`App Running On ${PORT}`));
+server.listen(PORT, () => console.log(`App Running On ${PORT}`));
+// app.listen(PORT, () => console.log(`App Running On ${PORT}`));
